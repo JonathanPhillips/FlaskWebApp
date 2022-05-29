@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+{% block title %}Update Notes{% endblock %} 
+{% block content%}
+<h1 align="center">Update Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+    <form action="/update/{{noteId}}"
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    {{ noteId }} <a href="/update/{{ noteID }}" class="btn btn-outline-secondary btn-sm">Update</a>
+    <a href="/delete/{{ noteID }}" class="btn btn-outline-danger btn-sm">Delete</a>
+    {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+{% endblock %}
